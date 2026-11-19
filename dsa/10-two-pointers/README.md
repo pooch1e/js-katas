@@ -13,15 +13,7 @@ Lots of "check every pair" or "check every subarray" problems look like O(n²) o
 - **Fixed-size window:** for a window of size k, don't re-sum all k items for each position. Add the item entering and subtract the item leaving. That's O(1) per step.
 - **Variable-size window:** grow the right edge. When the window breaks a rule, shrink from the left until it's valid again. Each item enters once and leaves once, so it's O(n) overall.
 
-```js
-// A different problem: a running average of the last 3 readings, without re-adding
-let windowSum = 0;
-readings.forEach((r, i) => {
-  windowSum += r;
-  if (i >= 3) windowSum -= readings[i - 3];
-  if (i >= 2) console.log(windowSum / 3);
-});
-```
+A picture instead of code: a 7-day step count. When day 8 arrives, the new window is days 2–8. Its total is the old total, plus day 8, minus day 1. Six of the seven numbers didn't change, so don't add them up again.
 
 ---
 

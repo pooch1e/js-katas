@@ -25,17 +25,9 @@ Now you build the async tools you've been using: `Promise.all`, a concurrency po
 
 ### promiseAll
 
-**The concept:** return one new promise. Subscribe to every input. Put each result at its own index. Resolve when the count reaches the length, and reject on the first failure.
+**The concept:** the inputs finish in any order, but the output must match the input order. And you need some way of knowing when the *last* one has finished. Where does each result go, and how do you know when you're done?
 
-```js
-// A different problem: wait for N callbacks, any order, then report
-function whenAllCalled(n, done) {
-  let count = 0;
-  return () => { if (++count === n) done(); };
-}
-```
-
-**Building blocks:** `new Promise`, `forEach((p, i) => ...)`, `Promise.resolve(x)` to treat plain values as promises, a counter. Watch out for the empty input.
+**Building blocks:** `new Promise`, the index from `forEach`, `Promise.resolve(x)` to treat plain values as promises. Watch out for the empty input.
 
 ### promiseRace
 

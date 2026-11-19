@@ -33,16 +33,9 @@ You'll call `arr.sort()` for the rest of your career. Write these four once, so 
 
 ### insertionSort
 
-**The concept:** like sorting a hand of cards. Take the next card and slide it left past every larger card.
+**The concept:** like sorting a hand of cards. Everything to the left of your current card is already sorted. Take the card out, slide the bigger cards one place right to make a gap, and drop it in. Why does that make nearly sorted input fast?
 
-```js
-// A different problem: inserting one value into an already-sorted array
-function insertSorted(sorted, x) {
-  let i = sorted.length;
-  while (i > 0 && sorted[i - 1] > x) i--;
-  return [...sorted.slice(0, i), x, ...sorted.slice(i)];
-}
-```
+**Building blocks:** an outer `for`, an inner `while` that compares with `compare`, a temporary for the card you're holding.
 
 ### mergeSort
 

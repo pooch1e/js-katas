@@ -47,8 +47,11 @@ function longestWord(words) {
 **The concept:** build a new array from the parts *before* and *after* the index. Validate the index first.
 
 ```js
-// A different problem: insert without mutating
-const insertAt = (arr, i, x) => [...arr.slice(0, i), x, ...arr.slice(i)];
+// How slice behaves (end is excluded, nothing is mutated)
+const letters = ["a", "b", "c", "d"];
+letters.slice(0, 2);  // ["a", "b"]
+letters.slice(2);     // ["c", "d"]
+letters.slice(-1);    // ["d"]
 ```
 
 **Building blocks:** `slice`, spread, `Number.isInteger`, `throw new RangeError(...)`. Second pass: `toSpliced`.

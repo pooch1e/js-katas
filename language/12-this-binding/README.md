@@ -45,9 +45,9 @@ const clock = {
 
 ### myCall — choosing `this` yourself
 
-**The concept:** the only way to make a function see `this === x` without `call`, `apply` or `bind` is to call it *as a method of `x`*. So temporarily attach the function to `x`, call it, and remove it again. Use a `Symbol` as the property key so you can't clobber a real property.
+**The concept:** look back at the table. Without `call`, `apply` or `bind`, there's only one call style that lets you choose what `this` is. Your job is to make that call style happen, and to leave `thisArg` exactly as you found it.
 
-**Building blocks:** `Symbol()`, `obj[key] = fn`, `obj[key](...args)`, `delete obj[key]`. Don't use `.call`, `.apply` or `.bind`.
+**Building blocks:** `Symbol()` (a property key nothing else can collide with), bracket access, `delete`. Don't use `.call`, `.apply` or `.bind`.
 
 ### myBind — a function that remembers `this` and some arguments
 

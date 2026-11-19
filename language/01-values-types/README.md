@@ -69,9 +69,11 @@ function toBoolOrNull(input) {
 **The concept:** you can't fix floating point, but you can round the answer to the precision you care about. For money that's 2 decimal places. A common approach is to scale up, round to an integer, then scale back down.
 
 ```js
-// A different problem: round a percentage to 1 decimal place
-const roundTo1dp = (n) => Math.round(n * 10) / 10;
+// A different problem: snap a meeting length to the nearest 5 minutes
+const snapTo5 = (minutes) => Math.round(minutes / 5) * 5;   // 13 → 15, 12 → 10
 ```
+
+Here the step is *bigger* than 1, so you divide first. For cents the step is *smaller* than 1. Work out which way round that makes it.
 
 **Building blocks:** `Math.round`, multiplication and division by a power of 10.
 
@@ -79,4 +81,4 @@ const roundTo1dp = (n) => Math.round(n * 10) / 10;
 
 **The concept:** `===` has two exceptions. It says `NaN !== NaN`, and it says `0 === -0`. Write an equality check that fixes both. (`Object.is` already does this. Don't use it. Build it yourself.)
 
-**Building blocks:** `Number.isNaN`. To tell `0` from `-0`, try dividing by them: `1 / 0` is `Infinity`, `1 / -0` is `-Infinity`.
+**Building blocks:** `Number.isNaN`. `0` and `-0` look identical to `===`, so you need an operation that treats them differently. Experiment in the node REPL with arithmetic on each.

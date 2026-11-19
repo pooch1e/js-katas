@@ -22,15 +22,14 @@ A **graph** is a set of nodes connected by edges. Trees are graphs with no cycle
 
 ### hasPath — DFS with a visited set
 
+The guard every graph walk needs, wherever you visit a node:
+
 ```js
-// A different problem: every room you can reach from the entrance
-function reachable(rooms, start, seen = new Set()) {
-  if (seen.has(start)) return seen;
-  seen.add(start);
-  for (const next of rooms[start] ?? []) reachable(rooms, next, seen);
-  return seen;
-}
+if (seen.has(node)) return;   // been here already: stop, or a cycle loops forever
+seen.add(node);
 ```
+
+**Building blocks:** recursion (or a stack), a `Set` passed along or held in a closure, `graph[node] ?? []` for nodes with no entry.
 
 ### shortestPathGrid — BFS
 

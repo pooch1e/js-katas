@@ -13,10 +13,13 @@ A **binary tree** is a set of nodes where each node has at most two children, `l
 - **The recursive template:** handle `null` (the base case), recurse into `left` and `right`, then combine the results with the current node.
 
   ```js
-  // A different problem: count the nodes in a tree
-  function count(node) {
-    if (!node) return 0;
-    return 1 + count(node.left) + count(node.right);
+  // A different problem: collect the values of every leaf (a node with no children)
+  function leaves(node, out = []) {
+    if (!node) return out;
+    if (!node.left && !node.right) out.push(node.value);
+    leaves(node.left, out);
+    leaves(node.right, out);
+    return out;
   }
   ```
 - **Depth-first (DFS) orders:** *pre-order* (node, left, right), *in-order* (left, node, right), *post-order* (left, right, node). DFS is recursion or an explicit stack.
@@ -36,7 +39,7 @@ A **binary tree** is a set of nodes where each node has at most two children, `l
 
 ### maxDepth
 
-**Building blocks:** the recursive template, `Math.max`.
+**Building blocks:** the recursive template. What should the base case return, and how do you combine the two sides?
 
 ### levelOrder — BFS
 

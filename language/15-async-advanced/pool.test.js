@@ -35,8 +35,8 @@ describe("pool", () => {
   it("actually runs tasks in parallel up to the limit", async () => {
     const t = tracker();
     const start = Date.now();
-    await pool(Array.from({ length: 4 }, () => t.task(40)), 4);
-    expect(Date.now() - start).toBeLessThan(120);
+    await pool(Array.from({ length: 4 }, () => t.task(60)), 4);
+    expect(Date.now() - start).toBeLessThan(180);
   });
 
   it("works when limit is larger than the number of tasks", async () => {

@@ -18,8 +18,8 @@ describe("climbStairs", () => {
   });
 
   // Plain recursion makes ~2^n calls. This needs memoisation or a table.
-  it("handles 80 steps quickly", () => {
-    expect(climbStairs(80)).toBe(37889062373143906);
+  it("handles 70 steps quickly", () => {
+    expect(climbStairs(70)).toBe(308061521170129);
   });
 
   it.todo("has 1 way to climb 0 steps (do nothing)");

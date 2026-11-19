@@ -21,11 +21,14 @@ Two ways to implement it:
 - **Bottom-up (tabulation):** an array `dp` where `dp[i]` is the answer for state `i`. Fill it with a loop from the base cases upwards. No recursion, so no stack limits.
 
 ```js
-// A different problem: ways to tile a 2×n strip with 1×2 dominoes (it happens to be Fibonacci-shaped)
-function tilings(n) {
-  const dp = [1, 1];                       // base cases: n = 0 and n = 1
-  for (let i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];
-  return dp[n];
+// A different problem: paths through a grid moving only right or down (top-down, memoised)
+function gridPaths(rows, cols, memo = new Map()) {
+  if (rows === 1 || cols === 1) return 1;              // base case: a single row or column
+  const key = `${rows},${cols}`;                        // the state
+  if (!memo.has(key)) {
+    memo.set(key, gridPaths(rows - 1, cols, memo) + gridPaths(rows, cols - 1, memo));  // recurrence
+  }
+  return memo.get(key);
 }
 ```
 

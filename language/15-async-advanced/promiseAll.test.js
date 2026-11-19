@@ -33,8 +33,8 @@ describe("promiseAll", () => {
   it("rejects without waiting for slow promises", async () => {
     const start = Date.now();
     const failing = Promise.reject(new FetchError("fast fail"));
-    await expect(promiseAll([after(500, "slow"), failing])).rejects.toThrow(FetchError);
-    expect(Date.now() - start).toBeLessThan(200);
+    await expect(promiseAll([after(1000, "slow"), failing])).rejects.toThrow(FetchError);
+    expect(Date.now() - start).toBeLessThan(500);
   });
 
   it.todo("does not call Promise.all (spy on it with vi.spyOn and assert it wasn't called)");

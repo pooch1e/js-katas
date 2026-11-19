@@ -18,14 +18,17 @@ Several tests here **count how many times you read the array** (using a `Proxy`)
 - **Infinite loops** happen when an update can leave `lo`/`hi` unchanged (e.g. `lo = mid` when `mid === lo`). Trace a 2-element case by hand.
 - **Binary search on the answer:** sometimes there's no array at all. You search a *range of possible answers* for the boundary where a condition flips, as in `sqrtFloor`.
 
-```js
-// A different problem: the first day the plant is taller than 50cm, given height(day) only ever grows
-let lo = 0, hi = 365;
-while (lo < hi) {
-  const mid = Math.floor((lo + hi) / 2);
-  if (height(mid) > 50) hi = mid; else lo = mid + 1;
-}
-```
+A worked trace with no code. Guess a number from 1 to 100, where you're told "higher" or "lower":
+
+| guess | answer | still possible |
+|---|---|---|
+| 50 | higher | 51–100 |
+| 75 | lower | 51–74 |
+| 62 | higher | 63–74 |
+| 68 | lower | 63–67 |
+| 65 | correct | — |
+
+Five guesses instead of up to 100. Before you write each kata, do a trace like this on paper for a 2- or 3-item input, writing down `lo`, `hi` and `mid` at every step.
 
 ---
 

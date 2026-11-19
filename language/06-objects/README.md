@@ -63,8 +63,12 @@ for (const i of [2, 0]) current = current?.[i];
 **The concept:** to change `user.address.city` without mutating anything, you make a new `user` containing a new `address` containing the new city. Everything you *didn't* touch can be shared.
 
 ```js
-// A different problem: toggle a setting two levels deep
-const next = { ...state, settings: { ...state.settings, darkMode: true } };
+// A different problem: mark one todo as done, inside an array, without mutating
+const next = {
+  ...state,
+  todos: state.todos.map((t) => (t.id === id ? { ...t, done: true } : t)),
+};
+// state.todos is untouched; untouched todos are shared, the changed one is new
 ```
 
 **Building blocks:** object spread at each level.

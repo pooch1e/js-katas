@@ -25,9 +25,9 @@ Plain objects and arrays can do everything `Map` and `Set` do, but slowly or awk
 **The concept:** build a `Set` from one array so membership checks are instant, then walk the other.
 
 ```js
-// A different problem: which of today's visitors are new?
-const seenBefore = new Set(yesterday);
-const newcomers = today.filter((v) => !seenBefore.has(v));
+// A different problem: a profanity filter. Build the Set once; each check is then instant.
+const banned = new Set(["darn", "heck"]);
+const isClean = (word) => !banned.has(word.toLowerCase());
 ```
 
 **Building blocks:** `new Set(arr)`, `.has`, `filter`, spread. Return arrays, without duplicates.
