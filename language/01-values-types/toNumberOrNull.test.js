@@ -37,7 +37,15 @@ describe("toNumberOrNull", () => {
   });
 
   // Number(true) is 1 and Number(null) is 0. Neither is a number the user typed.
-  it.todo("returns null for booleans, null and undefined");
+  it("returns null for booleans, null and undefined", () => {
+    expect(toNumberOrNull(null)).toBeNull;
+    expect(toNumberOrNull(true)).toBeNull;
+    expect(toNumberOrNull(false)).toBeNull;
+    expect(toNumberOrNull(undefined)).toBeNull;
+  });
 
-  it.todo("returns null for arrays and objects");
+  it("returns null for arrays and objects", () => {
+    expect(toNumberOrNull([])).toBeNull;
+    expect(toNumberOrNull({})).toBeNull;
+  });
 });
