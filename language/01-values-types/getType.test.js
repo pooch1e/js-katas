@@ -38,8 +38,13 @@ describe("getType", () => {
     expect(getType(undefined)).toBe("undefined");
   });
 
-  it.todo("returns 'boolean' for true and false");
+  it("returns 'boolean' for true and false", () => {
+    expect(getType(true)).toBe('boolean')
+    expect(getType(false)).toBe('boolean')
+  });
 
   // Arrow functions, regular functions and classes are all functions.
-  it.todo("returns 'function' for functions and classes");
+  it("returns 'function' for functions and classes", () => {
+    expect(getType(() => { })).toBe('function')
+  });
 });
