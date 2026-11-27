@@ -3,5 +3,11 @@
  * Don't use Object.is. See README.md › sameValue.
  */
 export function sameValue(a, b) {
-  throw new Error("TODO: implement sameValue");
+  if (isNaN(a) && isNaN(b)) {
+    return true
+  }
+  if (JSON.stringify(a) === JSON.stringify(b)) {
+    return true
+  }
+  return a === b ? true : false
 }

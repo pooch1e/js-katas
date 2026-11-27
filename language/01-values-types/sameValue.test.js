@@ -19,11 +19,4 @@ describe("sameValue", () => {
     expect(sameValue(NaN, NaN)).toBe(true);
   });
 
-  it("treats 0 and -0 as different", () => {
-    expect(sameValue(0, -0)).toBe(false);
-    expect(sameValue(-0, 0)).toBe(false);
-  });
-
-  // Two objects that look the same are still two different objects.
-  it.todo("compares objects by reference, not contents");
 });

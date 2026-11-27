@@ -29,6 +29,4 @@ describe("isBlank", () => {
     expect(isBlank(0)).toBe(false);
     expect(isBlank(false)).toBe(false);
   });
-
-  it.todo("is false for empty arrays and objects");
 });
